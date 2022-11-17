@@ -1,11 +1,10 @@
-import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppStyle {
-  static Color bgColor = Color(0xffe2e2ff);
-  static Color mainColor = Color(0xff000633);
-  static Color accentColor = Color(0xff0065ff);
+  static Color bgColor =const Color(0xffe2e2ff);
+  static Color mainColor =const Color(0xff000633);
+  static Color accentColor =const Color(0xff0065ff);
 
   static List<Color> cardsColor = [
     Colors.pink.shade100,

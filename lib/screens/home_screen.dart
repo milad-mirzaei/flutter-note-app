@@ -6,7 +6,7 @@ import 'package:notes_app/style/app_style.dart';
 import 'package:notes_app/widgets/note_card.dart';
 
 class HomeScreen extends StatefulWidget {
-  HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -18,25 +18,25 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: Colors.pink.shade50,
       floatingActionButton: InkWell(
-        onTap: () => Navigator.push(
-            context, MaterialPageRoute(builder: (context) => NoteWrite())),
+        onTap: () => Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const NoteWrite())),
         child: Container(
           width: 175,
           height: 75,
           decoration: BoxDecoration(
               boxShadow: [
                 BoxShadow(
-                    offset: Offset(3, 3),
+                    offset: const Offset(3, 3),
                     color: Colors.pink.shade100,
                     blurRadius: 10,
                     spreadRadius: 2)
               ],
-              color: Color.fromARGB(255, 241, 167, 192),
+              color: const Color.fromARGB(255, 241, 167, 192),
               borderRadius: BorderRadius.circular(30)),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(Icons.add, size: 35, color: Colors.black45),
+              const Icon(Icons.add, size: 35, color: Colors.black45),
               Text(
                 "Add Note",
                 style: AppStyle.mainTitle
@@ -46,15 +46,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
-      // floatingActionButton: FloatingActionButton.extended(
-      //   label: Text(
-      //     "Add Note",
-      //   ),
-      //   icon: Icon(Icons.add),
-      //   backgroundColor: Colors.pink.shade400,
-      //   onPressed: () => Navigator.push(
-      //       context, MaterialPageRoute(builder: (context) => NoteWrite())),
-      // ),
       appBar: AppBar(
           centerTitle: true,
           elevation: 0,
@@ -73,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
               style: AppStyle.mainTitle.copyWith(color: Colors.black54),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 17,
           ),
           Expanded(
@@ -81,22 +72,24 @@ class _HomeScreenState extends State<HomeScreen> {
             stream: FirebaseFirestore.instance.collection("notes").snapshots(),
             builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return Center(
+                return const Center(
                   child: CircularProgressIndicator(),
                 );
               }
               if (snapshot.hasData) {
                 return GridView(
-                  physics: BouncingScrollPhysics(),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  physics: const BouncingScrollPhysics(),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2),
                   children: snapshot.data!.docs
-                      .map((note) => noteCard(() {
+                      .map((note) => NoteCard(
+                          onTap: () {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => NoteRead(doc: note)));
-                          }, note))
+                          },
+                          doc: note))
                       .toList(),
                 );
               }

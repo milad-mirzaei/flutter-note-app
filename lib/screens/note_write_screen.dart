@@ -1,23 +1,26 @@
+// ignore_for_file: avoid_print, invalid_return_type_for_catch_error
+
 import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
+
 import 'package:flutter/material.dart';
 import 'package:notes_app/style/app_style.dart';
 
 class NoteWrite extends StatefulWidget {
-  NoteWrite({Key? key}) : super(key: key);
+  const NoteWrite({Key? key}) : super(key: key);
 
   @override
   State<NoteWrite> createState() => _NoteWriteState();
 }
 
 class _NoteWriteState extends State<NoteWrite> {
+  // ignore: non_constant_identifier_names
   int color_id = Random().nextInt(AppStyle.cardsColor.length);
   String date1 = DateTime.now().toString();
 
-  TextEditingController _titleController = TextEditingController();
-  TextEditingController _mainController = TextEditingController();
+  final TextEditingController _titleController = TextEditingController();
+  final TextEditingController _mainController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     String date = date1.substring(0, date1.length - 10);
@@ -39,7 +42,7 @@ class _NoteWriteState extends State<NoteWrite> {
         child: Container(
           width: 117,
           height: 75,
-          decoration: BoxDecoration(boxShadow: [
+          decoration: BoxDecoration(boxShadow: const [
             BoxShadow(
                 offset: Offset(3, 3),
                 color: Colors.white38,
@@ -49,7 +52,7 @@ class _NoteWriteState extends State<NoteWrite> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(Icons.check, size: 35, color: Colors.black45),
+              const Icon(Icons.check, size: 35, color: Colors.black45),
               Text(
                 "Done",
                 style: AppStyle.mainTitle
@@ -69,7 +72,7 @@ class _NoteWriteState extends State<NoteWrite> {
         centerTitle: true,
         leading: InkWell(
             onTap: () => Navigator.of(context).pop(),
-            child: Icon(
+            child: const Icon(
               Icons.arrow_back,
               color: Colors.black54,
             )),
@@ -79,7 +82,7 @@ class _NoteWriteState extends State<NoteWrite> {
         child: Column(
           children: [
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 17, vertical: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 17, vertical: 10),
               decoration: BoxDecoration(
                   color: Colors.white.withOpacity(.3),
                   borderRadius: BorderRadius.circular(20)),
@@ -88,34 +91,34 @@ class _NoteWriteState extends State<NoteWrite> {
                 style: AppStyle.dateTitle,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 25,
             ),
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 17, vertical: 7),
+              padding: const EdgeInsets.symmetric(horizontal: 17, vertical: 7),
               decoration: BoxDecoration(
                   color: Colors.white.withOpacity(.6),
                   borderRadius: BorderRadius.circular(20)),
               child: TextField(
                 controller: _titleController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   border: InputBorder.none,
                   hintText: "Note Title",
                 ),
                 style: AppStyle.mainTitle,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 17,
             ),
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 17, vertical: 7),
+              padding: const EdgeInsets.symmetric(horizontal: 17, vertical: 7),
               decoration: BoxDecoration(
                   color: Colors.white.withOpacity(.6),
                   borderRadius: BorderRadius.circular(20)),
               child: TextField(
                 controller: _mainController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   border: InputBorder.none,
                   hintText: "Your Note ...",
                 ),
