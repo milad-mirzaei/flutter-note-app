@@ -28,16 +28,20 @@ class _NoteWriteState extends State<NoteWrite> {
       backgroundColor: AppStyle.cardsColor[color_id],
       floatingActionButton: InkWell(
         onTap: () async {
-          FirebaseFirestore.instance.collection('notes').add({
-            "note_title": _titleController.text,
-            "creation_date": date,
-            "note_content": _mainController.text,
-            "color_id": color_id
-          }).then((value) {
-            print(value);
+          if (_titleController.text.isEmpty && _mainController.text.isEmpty) {
             Navigator.pop(context);
-          }).catchError(
-              (error) => print("Faild to add new Note due to $error"));
+          } else {
+            FirebaseFirestore.instance.collection('notes').add({
+              "note_title": _titleController.text,
+              "creation_date": date,
+              "note_content": _mainController.text,
+              "color_id": color_id
+            }).then((value) {
+              print(value);
+              Navigator.pop(context);
+            }).catchError(
+                (error) => print("Faild to add new Note due to $error"));
+          }
         },
         child: Container(
           width: 117,

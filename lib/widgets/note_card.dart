@@ -126,17 +126,16 @@ class _NoteCardState extends State<NoteCard> {
                   onTap: () => showDialog(
                       context: context,
                       barrierColor: Colors.grey.withOpacity(.2),
-                      builder: (context) => Container(
-                            child: Center(
-                                child: Container(
-                              padding: EdgeInsets.symmetric(
+                      builder: (context) => Center(
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(
                                   horizontal: 17, vertical: 25),
                               width: 357,
                               height: 157,
                               decoration: BoxDecoration(
                                   boxShadow: [
                                     BoxShadow(
-                                        offset: Offset(3, 3),
+                                        offset: const Offset(3, 3),
                                         color: Colors.pink.shade100,
                                         blurRadius: 10,
                                         spreadRadius: 3)
@@ -163,9 +162,10 @@ class _NoteCardState extends State<NoteCard> {
                                           style: TextButton.styleFrom(
                                               backgroundColor:
                                                   Colors.white.withOpacity(.2),
-                                              padding: EdgeInsets.symmetric(
-                                                  horizontal: 30,
-                                                  vertical: 12)),
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 30,
+                                                      vertical: 12)),
                                           child: Text(
                                             "No",
                                             style: AppStyle.mainTitle.copyWith(
@@ -179,9 +179,10 @@ class _NoteCardState extends State<NoteCard> {
                                           style: TextButton.styleFrom(
                                               backgroundColor:
                                                   Colors.white.withOpacity(.2),
-                                              padding: EdgeInsets.symmetric(
-                                                  horizontal: 30,
-                                                  vertical: 12)),
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 30,
+                                                      vertical: 12)),
                                           child: Text(
                                             "Yes",
                                             style: AppStyle.mainTitle.copyWith(
@@ -191,7 +192,7 @@ class _NoteCardState extends State<NoteCard> {
                                   )
                                 ],
                               ),
-                            )),
+                            ),
                           )
                       // builder: (context) => AlertDialog(
                       //       elevation: 0,
